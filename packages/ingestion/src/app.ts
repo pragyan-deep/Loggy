@@ -1,10 +1,16 @@
 import express from "express";
 import { writeLog } from "./logger";
+import { demo } from "./services/demo.service";
 
 const app = express();
 app.use(express.json());
 
 app.get("/", (req, res) => {
+    res.send("Ingestion Module Running")
+});
+
+app.get("/demo", (req, res) => {
+    demo();
     res.send("Ingestion Module Running")
 });
 

@@ -12,7 +12,6 @@ export class FileLogSource implements Source {
 
   start(callback: (log: string) => void): void {
     const watcher = chokidar.watch(this.filePath, { persistent: true });
-    console.log("====path", this.filePath)
 
     watcher.on("change", (path) => {
       fs.readFile(path, "utf-8", (err, data) => {

@@ -15,17 +15,17 @@ export class LogReceiverService {
   }
 
   start(): void {
-      const configuredSources = process.env.LOG_SOURCES?.split(",") || [];
+    const configuredSources = process.env.LOG_SOURCES?.split(",") || [];
 
-    configuredSources.forEach((sourceType) => {
-      try {
-        const logSource = LogSourceFactory.create(sourceType.trim(), { filePath: LOG_FILE });
-        logSource.start((log) => this.processLog(log));
-        this.sources.push(logSource);
-      } catch (error) {
-        console.error(`Error initializing log source (${sourceType}):`, error);
-      }
-    });
+    // configuredSources.forEach((sourceType) => {
+    //   try {
+    //     const logSource = LogSourceFactory.create(sourceType.trim(), { filePath: LOG_FILE });
+    //     logSource.start((log) => this.processLog(log));
+    //     this.sources.push(logSource);
+    //   } catch (error) {
+    //     console.error(`Error initializing log source (${sourceType}):`, error);
+    //   }
+    // });
   }
 
   private processLog(log: string): void {
